@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theo Ngành – FundDCA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0a0c0f; --bg2:#111318; --bg3:#181c23; --bg4:#1e2330;
+      --border:#1f2530; --border2:#2a3040;
+      --text:#e8eaf0; --text-muted:#6b7590; --text-dim:#3d4560;
+      --red:#ff3b5c; --red-soft:#ff3b5c1a; --red-mid:#ff3b5c35;
+      --orange:#ff7a30; --yellow:#f5c542; --yellow-soft:#f5c54218;
+      --green:#00d68f; --green-soft:#00d68f14; --green-mid:#00d68f30;
+      --accent:#4a9eff; --accent-soft:#4a9eff18;
+      --purple:#b06fff; --purple-soft:#b06fff15;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-mono:'Space Mono',monospace;
+      --font-body:'Instrument Sans',sans-serif;
+    }
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+    .hdr{position:sticky;top:0;z-index:100;background:rgba(10,12,15,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 20px;}
+    .hdr-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px;gap:12px;}
+    .logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+    .logo-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--red),var(--orange));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:17px;color:#fff;}
+    .logo-text{font-family:var(--font-display);font-size:20px;letter-spacing:1px;color:var(--text);}
+    .logo-text span{color:var(--red);}
+    .hdr-nav{display:flex;gap:2px;}
+    .nav-a{padding:5px 11px;border-radius:5px;font-size:12px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:.15s;}
+    .nav-a:hover,.nav-a.on{color:var(--text);background:var(--bg3);}
+    .nav-a.on{color:var(--accent);}
+    .btn-aff{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:5px;font-size:12px;font-weight:600;background:var(--red);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:.18s;}
+    .btn-aff:hover{background:#ff1a3e;transform:translateY(-1px);}
+
+    .hero{border-bottom:1px solid var(--border);padding:20px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);}
+    .hero-in{max-width:1400px;margin:0 auto;}
+    .hero-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,44px);line-height:1;letter-spacing:1px;}
+    .hero-title .hl{color:var(--purple);}
+    .hero-sub{font-size:12px;color:var(--text-muted);margin-top:5px;line-height:1.6;max-width:560px;}
+
+    .toolbar{padding:11px 20px;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:54px;z-index:90;}
+    .tb-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .tb-lbl{font-size:11px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+    .search{padding:4px 11px;border-radius:4px;font-size:12px;border:1px solid var(--border);background:var(--bg3);color:var(--text);outline:none;width:200px;transition:.15s;}
+    .search::placeholder{color:var(--text-dim)}.search:focus{border-color:var(--border2)}
+    .flt-grp{display:flex;gap:3px;flex-wrap:wrap;}
+    .flt{padding:4px 11px;border-radius:4px;font-size:11px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:.12s;}
+    .flt:hover{border-color:var(--border2);color:var(--text);}
+    .flt.on{background:var(--bg3);border-color:var(--border2);color:var(--text);}
+    .tb-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+    .sort-sel{padding:4px 9px;border-radius:4px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;outline:none;}
+
+    .main{max-width:1400px;margin:0 auto;padding:20px;}
+
+    /* 2 COLUMN LAYOUT */
+    .layout{display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start;}
+    @media(max-width:900px){.layout{grid-template-columns:1fr;}}
+
+    /* INDUSTRY PANEL */
+    .ind-panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:sticky;top:110px;}
+    .ind-panel-hdr{padding:12px 16px;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);}
+    .ind-list{max-height:calc(100vh - 200px);overflow-y:auto;}
+    .ind-item{display:flex;align-items:center;gap:10px;padding:9px 16px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;}
+    .ind-item:last-child{border-bottom:none;}
+    .ind-item:hover{background:var(--bg3);}
+    .ind-item.active{background:var(--purple-soft);border-left:3px solid var(--purple);}
+    .ind-item.active .ind-name{color:var(--purple);}
+    .ind-name{font-size:12px;font-weight:500;flex:1;}
+    .ind-count{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);}
+    .ind-bar-mini{flex:none;width:50px;height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+    .ind-bar-fill{height:100%;background:var(--purple);border-radius:2px;}
+    .ind-all{background:var(--bg3);}
+    .ind-all .ind-name{color:var(--text);}
+
+    /* FUND CARDS */
+    .fund-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+    .fund-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;transition:border-color .15s;animation:fadeIn .2s ease both;}
+    .fund-card:hover{border-color:var(--border2);}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .fc-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
+    .fc-code{font-family:var(--font-mono);font-size:14px;font-weight:700;}
+    .fc-nav{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);text-align:right;}
+    .fc-nav-chg{font-size:11px;}
+    .fc-name{font-size:10px;color:var(--text-muted);margin-top:2px;line-height:1.4;}
+    .fc-holdings{margin-top:10px;}
+    .fc-holdings-title{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim);margin-bottom:6px;}
+    .fc-h-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+    .fc-h-name{font-family:var(--font-mono);font-size:11px;font-weight:600;min-width:36px;}
+    .fc-h-bar-bg{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+    .fc-h-bar{height:100%;border-radius:2px;}
+    .fc-h-pct{font-family:var(--font-mono);font-size:10px;min-width:36px;text-align:right;}
+    .fc-h-chg{font-family:var(--font-mono);font-size:9px;min-width:42px;text-align:right;}
+    .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--text-muted)}
+    .fc-footer{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .fc-redness{font-size:10px;color:var(--text-muted);}
+    .fc-redness-val{font-family:var(--font-mono);font-weight:700;}
+    .btn-dca{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:600;background:transparent;color:var(--text-muted);text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:.14s;}
+    .btn-dca:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-dca.hot{background:var(--red-soft);border-color:var(--red-mid);color:var(--red);}
+    .btn-dca.hot:hover{background:var(--red-mid);}
+
+    .no-result{padding:60px;text-align:center;color:var(--text-muted);font-size:13px;}
+    .spinner-wrap{padding:80px;text-align:center;}
+    .spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    @media(max-width:700px){.hdr-nav{display:none}}
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">F</div>
+      <span class="logo-text">Fund<span>DCA</span></span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html"       class="nav-a">🔴 Chỉ số Đỏ</a>
+      <a href="fees.html"        class="nav-a">💰 So sánh Phí</a>
+      <a href="sectors.html"     class="nav-a on">🏭 Theo Ngành</a>
+      <a href="performance.html" class="nav-a">📈 Hiệu suất</a>
+    </nav>
+    <a href="#" class="btn-aff" id="hdr-aff">↗ Mở tài khoản</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <h1 class="hero-title">Quỹ theo <span class="hl">Ngành</span></h1>
+    <p class="hero-sub">Xem quỹ nào đang nắm giữ nhiều nhất từng ngành. Chọn ngành bên trái để lọc. Dữ liệu từ Top 10 Holdings của mỗi quỹ.</p>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="tb-in">
+    <span class="tb-lbl">Tìm quỹ:</span>
+    <input type="text" class="search" id="search" placeholder="🔍  Mã hoặc tên quỹ..." />
+    <span class="tb-lbl" style="margin-left:6px">Sắp xếp:</span>
+    <select class="sort-sel" id="sort-sel">
+      <option value="pct-desc">Tỷ trọng ngành cao nhất</option>
+      <option value="redness">Redness Index cao nhất</option>
+      <option value="perf12">Hiệu suất 1 năm tốt nhất</option>
+      <option value="name">Tên A-Z</option>
+    </select>
+    <div class="tb-right">
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);padding:3px 7px;background:var(--bg4);border:1px solid var(--border);border-radius:4px;" id="count-badge">-- quỹ</span>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="spinner-wrap" id="loading">
+    <div class="spinner"></div>
+    <p style="font-size:13px;color:var(--text-muted)">Đang tải dữ liệu ngành...</p>
+  </div>
+
+  <div class="layout" id="layout" style="display:none">
+    <!-- INDUSTRY LIST -->
+    <div class="ind-panel">
+      <div class="ind-panel-hdr">Chọn ngành</div>
+      <div class="ind-list" id="ind-list"></div>
+    </div>
+
+    <!-- FUND CARDS -->
+    <div id="fund-grid"></div>
+  </div>
+</main>
+
+<script>
+const AFF = {
+  rewardLink: "https://fmarket.vn/reward/007F986083194",
+  fundUrl: (c) => `https://fmarket.vn/quy/${c.toLowerCase()}`,
+};
+</script>
+<script>
+(function(){
+  document.getElementById("hdr-aff").onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+
+  const fmtNav=v=>v!=null?Number(v).toLocaleString("vi-VN",{maximumFractionDigits:0}):"--";
+  const fmtPct=v=>v==null?"--":(v>0?"+":"")+Number(v).toFixed(2)+"%";
+  const cls=v=>v==null?"neu":v>0?"pos":v<0?"neg":"neu";
+  const riColor=r=>r>=1.5?"var(--red)":r>=0.5?"var(--yellow)":"var(--green)";
+
+  // Sector color palette
+  const SECTOR_COLORS = [
+    "#4a9eff","#b06fff","#ff7a30","#00d68f","#f5c542",
+    "#ff3b5c","#26c6da","#66bb6a","#ef5350","#ab47bc",
+    "#78909c","#d4e157","#ff8a65","#26a69a","#7e57c2",
+    "#ec407a","#42a5f5","#9ccc65","#ffa726","#26c6da",
+    "#8d6e63"
+  ];
+  const sectorColorMap = {};
+
+  let ALL=[], activeInd="all", search="", sortBy="pct-desc";
+  let INDUSTRIES=[];
+
+  function buildIndList(){
+    // Count funds per industry
+    const counts={};
+    ALL.forEach(f=>{
+      const seen=new Set();
+      f.topHoldings?.forEach(h=>{
+        const ind=h.industry||"Khác";
+        if(!seen.has(ind)){ seen.add(ind); counts[ind]=(counts[ind]||0)+1; }
+      });
+    });
+    INDUSTRIES=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+    const maxCount=INDUSTRIES[0]?.[1]||1;
+
+    // Assign colors
+    INDUSTRIES.forEach(([ind],i)=>{ sectorColorMap[ind]=SECTOR_COLORS[i%SECTOR_COLORS.length]; });
+
+    const el=document.getElementById("ind-list");
+    el.innerHTML=`
+      <div class="ind-item ind-all active" data-ind="all">
+        <span class="ind-name">🌐 Tất cả ngành</span>
+        <span class="ind-count">${ALL.length} quỹ</span>
+      </div>
+      ${INDUSTRIES.map(([ind,cnt])=>`
+        <div class="ind-item" data-ind="${ind}">
+          <span class="ind-name">${ind}</span>
+          <div class="ind-bar-mini"><div class="ind-bar-fill" style="width:${(cnt/maxCount*100).toFixed(0)}%;background:${sectorColorMap[ind]}"></div></div>
+          <span class="ind-count">${cnt} quỹ</span>
+        </div>
+      `).join("")}
+    `;
+    el.querySelectorAll(".ind-item").forEach(item=>{
+      item.addEventListener("click",()=>{
+        el.querySelectorAll(".ind-item").forEach(i=>i.classList.remove("active"));
+        item.classList.add("active");
+        activeInd=item.dataset.ind;
+        render();
+      });
+    });
+  }
+
+  function getSectorPct(fund, ind){
+    if(ind==="all") return null;
+    return fund.topHoldings?.filter(h=>h.industry===ind).reduce((s,h)=>s+(h.netAssetPercent||0),0)||0;
+  }
+
+  function filtered(){
+    let list=[...ALL];
+    // filter by industry
+    if(activeInd!=="all") list=list.filter(f=>f.topHoldings?.some(h=>h.industry===activeInd));
+    // search
+    if(search){ const q=search.toLowerCase(); list=list.filter(f=>f.code.toLowerCase().includes(q)||(f.name||"").toLowerCase().includes(q)); }
+    // sort
+    if(sortBy==="pct-desc" && activeInd!=="all") list.sort((a,b)=>getSectorPct(b,activeInd)-getSectorPct(a,activeInd));
+    if(sortBy==="redness") list.sort((a,b)=>(b.rednessIndex||0)-(a.rednessIndex||0));
+    if(sortBy==="perf12") list.sort((a,b)=>((b.performance?.navTo12Months)||0)-((a.performance?.navTo12Months)||0));
+    if(sortBy==="name") list.sort((a,b)=>a.code.localeCompare(b.code));
+    return list;
+  }
+
+  function buildFundCard(f, rank){
+    const ri=f.rednessIndex||0;
+    const p=f.performance||{};
+    // If viewing a specific industry, show only those holdings first
+    let holdings = f.topHoldings||[];
+    if(activeInd!=="all"){
+      const indH = holdings.filter(h=>h.industry===activeInd);
+      const otherH = holdings.filter(h=>h.industry!==activeInd);
+      holdings=[...indH,...otherH].slice(0,6);
+    } else {
+      holdings=holdings.slice(0,6);
+    }
+    const maxPct=Math.max(...holdings.map(h=>h.netAssetPercent||0),1);
+
+    const holdingsHtml=holdings.map(h=>{
+      const barW=(h.netAssetPercent/maxPct*100).toFixed(0);
+      const indColor=sectorColorMap[h.industry]||"var(--accent)";
+      const isHighlight=activeInd!=="all"&&h.industry===activeInd;
+      return `<div class="fc-h-row">
+        <span class="fc-h-name" style="${isHighlight?`color:${indColor};font-weight:700`:""}">${h.stockCode}</span>
+        <div class="fc-h-bar-bg"><div class="fc-h-bar" style="width:${barW}%;background:${isHighlight?indColor:"var(--border2)"}"></div></div>
+        <span class="fc-h-pct" style="color:var(--text-muted)">${h.netAssetPercent?.toFixed(1)}%</span>
+        <span class="fc-h-chg ${cls(h.changeFromPreviousPercent)}">${h.changeFromPreviousPercent!=null?(h.changeFromPreviousPercent>0?"+":"")+h.changeFromPreviousPercent.toFixed(1)+"%":"--"}</span>
+      </div>`;
+    }).join("");
+
+    const sectorPct=getSectorPct(f,activeInd);
+    const navChgCls=cls(f.navToPrevious);
+
+    return `<div class="fund-card" style="animation-delay:${rank*30}ms">
+      <div class="fc-head">
+        <div>
+          <div class="fc-code">${f.code}</div>
+          <div class="fc-name">${f.name||""}</div>
+          ${activeInd!=="all"&&sectorPct!=null?`<div style="margin-top:5px;font-size:10px;color:${sectorColorMap[activeInd]||"var(--accent)"};font-weight:600">Tỷ trọng ${activeInd}: ${sectorPct.toFixed(1)}%</div>`:""}
+        </div>
+        <div class="fc-nav">
+          <div style="font-size:12px">${fmtNav(f.nav)}</div>
+          <div class="fc-nav-chg ${navChgCls}">${fmtPct(f.navToPrevious)}</div>
+        </div>
+      </div>
+      <div class="fc-holdings">
+        <div class="fc-holdings-title">Top Holdings ${activeInd!=="all"?"("+activeInd+" ưu tiên)":""}</div>
+        ${holdingsHtml}
+      </div>
+      <div class="fc-footer">
+        <div class="fc-redness">
+          Redness: <span class="fc-redness-val" style="color:${riColor(ri)}">${ri.toFixed(2)}%</span>
+          &nbsp;|&nbsp; 1Y: <span class="${cls(p.navTo12Months)}">${fmtPct(p.navTo12Months)}</span>
+        </div>
+        <a href="#" class="btn-dca ${ri>=1.5?"hot":""} aff-link" data-fund="${f.code}">${ri>=1.5?"⚡ DCA":"Xem →"}</a>
+      </div>
+    </div>`;
+  }
+
+  function render(){
+    const list=filtered();
+    const grid=document.getElementById("fund-grid");
+    document.getElementById("count-badge").textContent=list.length+" quỹ";
+    if(!list.length){
+      grid.innerHTML=`<div class="no-result">Không có quỹ nào trong ngành này 🔍</div>`;
+      return;
+    }
+    grid.innerHTML=`<div class="fund-grid">${list.map((f,i)=>buildFundCard(f,i)).join("")}</div>`;
+    // bind aff
+    document.querySelectorAll(".aff-link").forEach(el=>{
+      const c=el.dataset.fund;
+      el.href=c?AFF.fundUrl(c):"https://fmarket.vn";
+      el.onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+    });
+  }
+
+  async function load(){
+    try{
+      const res=await fetch("data.json?t="+Date.now());
+      if(!res.ok) throw new Error();
+      const json=await res.json();
+      ALL=json.funds||[];
+      buildIndList();
+      render();
+      document.getElementById("loading").style.display="none";
+      document.getElementById("layout").style.display="grid";
+    }catch(e){
+      document.getElementById("loading").innerHTML=`<div style="padding:60px;text-align:center;color:var(--red)">⚠️ Không tải được data.json</div>`;
+    }
+  }
+
+  let st;
+  document.getElementById("search").addEventListener("input",e=>{ clearTimeout(st); st=setTimeout(()=>{ search=e.target.value.trim(); render(); },200); });
+  document.getElementById("sort-sel").addEventListener("change",e=>{ sortBy=e.target.value; render(); });
+
+  load();
+})();
+</script>
+</body>
+</html>

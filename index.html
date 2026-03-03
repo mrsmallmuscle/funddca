@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FundDCA – Săn Sale Chứng Chỉ Quỹ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0a0c0f; --bg2:#111318; --bg3:#181c23; --bg4:#1e2330;
+      --border:#1f2530; --border2:#2a3040;
+      --text:#e8eaf0; --text-muted:#6b7590; --text-dim:#3d4560;
+      --red:#ff3b5c; --red-soft:#ff3b5c1a; --red-mid:#ff3b5c35;
+      --orange:#ff7a30; --yellow:#f5c542; --yellow-soft:#f5c54218;
+      --green:#00d68f; --green-soft:#00d68f14;
+      --accent:#4a9eff;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-mono:'Space Mono',monospace;
+      --font-body:'Instrument Sans',sans-serif;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--font-body); background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; }
+    body::before {
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:.35;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+    }
+    ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+    /* ── HEADER ── */
+    .hdr { position:sticky; top:0; z-index:100; background:rgba(10,12,15,.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:0 20px; }
+    .hdr-in { max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:54px; gap:12px; }
+    .logo { display:flex; align-items:center; gap:9px; text-decoration:none; }
+    .logo-mark { width:30px; height:30px; background:linear-gradient(135deg,var(--red),var(--orange)); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:17px; color:#fff; }
+    .logo-text { font-family:var(--font-display); font-size:20px; letter-spacing:1px; color:var(--text); }
+    .logo-text span { color:var(--red); }
+    .hdr-nav { display:flex; gap:2px; }
+    .nav-a { padding:5px 11px; border-radius:5px; font-size:12px; font-weight:500; color:var(--text-muted); text-decoration:none; transition:.15s; }
+    .nav-a:hover,.nav-a.on { color:var(--text); background:var(--bg3); }
+    .nav-a.on { color:var(--accent); }
+    .upd-badge { font-family:var(--font-mono); font-size:10px; color:var(--text-muted); padding:3px 8px; background:var(--bg3); border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; gap:5px; }
+    .dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+    .btn-aff { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:5px; font-size:12px; font-weight:600; background:var(--red); color:#fff; text-decoration:none; border:none; cursor:pointer; transition:.18s; white-space:nowrap; }
+    .btn-aff:hover { background:#ff1a3e; transform:translateY(-1px); box-shadow:0 4px 16px var(--red-mid); }
+
+    /* ── HERO ── */
+    .hero { border-bottom:1px solid var(--border); padding:20px 20px; background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%); }
+    .hero-in { max-width:1400px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .hero-title { font-family:var(--font-display); font-size:clamp(26px,3.5vw,44px); line-height:1; letter-spacing:1px; }
+    .hero-title .hl { color:var(--red); }
+    .hero-sub { font-size:12px; color:var(--text-muted); margin-top:5px; line-height:1.6; max-width:480px; }
+    .hero-stats { display:flex; gap:28px; flex-wrap:wrap; }
+    .stat { text-align:center; }
+    .stat-v { font-family:var(--font-mono); font-size:20px; font-weight:700; }
+    .stat-v.r{color:var(--red)} .stat-v.g{color:var(--green)} .stat-v.y{color:var(--yellow)}
+    .stat-l { font-size:10px; color:var(--text-muted); margin-top:2px; text-transform:uppercase; letter-spacing:.5px; }
+
+    /* ── TOOLBAR ── */
+    .toolbar { padding:11px 20px; border-bottom:1px solid var(--border); background:var(--bg); position:sticky; top:54px; z-index:90; }
+    .tb-in { max-width:1400px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .tb-lbl { font-size:11px; color:var(--text-muted); font-weight:500; text-transform:uppercase; letter-spacing:.5px; white-space:nowrap; }
+    .flt-grp { display:flex; gap:3px; }
+    .flt { padding:4px 11px; border-radius:4px; font-size:11px; font-weight:500; border:1px solid var(--border); background:transparent; color:var(--text-muted); cursor:pointer; transition:.12s; }
+    .flt:hover { border-color:var(--border2); color:var(--text); }
+    .flt.on { background:var(--bg3); border-color:var(--border2); color:var(--text); }
+    .flt.on-red { background:var(--red-soft); border-color:var(--red); color:var(--red); }
+    .sort-sel { padding:4px 9px; border-radius:4px; font-size:11px; font-weight:500; border:1px solid var(--border); background:var(--bg3); color:var(--text); cursor:pointer; outline:none; }
+    .search { padding:4px 11px; border-radius:4px; font-size:12px; border:1px solid var(--border); background:var(--bg3); color:var(--text); outline:none; width:180px; transition:.15s; }
+    .search::placeholder{color:var(--text-dim)} .search:focus{border-color:var(--border2)}
+    .tb-right{margin-left:auto; display:flex; align-items:center; gap:8px;}
+    .count-badge { font-family:var(--font-mono); font-size:10px; color:var(--text-muted); padding:3px 7px; background:var(--bg4); border:1px solid var(--border); border-radius:4px; }
+
+    /* ── MAIN ── */
+    .main { max-width:1400px; margin:0 auto; padding:20px; }
+
+    /* ── TABLE ── */
+    .tbl-wrap { border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    table { width:100%; border-collapse:collapse; }
+    thead { background:var(--bg2); border-bottom:1px solid var(--border); }
+    thead th { padding:10px 12px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.6px; color:var(--text-muted); text-align:left; white-space:nowrap; cursor:pointer; user-select:none; }
+    thead th:hover{color:var(--text)} thead th.srt{color:var(--accent)}
+    .si{margin-left:3px;opacity:.5} th.srt .si{opacity:1}
+    tbody tr { border-bottom:1px solid var(--border); transition:background .12s; animation:fadeIn .25s ease both; }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:var(--bg2)}
+    tbody tr.row-red{background:var(--red-soft)}
+    tbody tr.row-red:hover{background:var(--red-mid)}
+    td { padding:11px 12px; font-size:12px; vertical-align:middle; }
+
+    /* rank */
+    .rank { font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:center; width:32px; }
+    .rank.top3 { color:var(--red); font-weight:700; }
+
+    /* fund name */
+    .fc { font-family:var(--font-mono); font-size:13px; font-weight:700; }
+    .fn { font-size:10px; color:var(--text-muted); margin-top:1px; max-width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+    /* badge */
+    .bdg { display:inline-flex; align-items:center; gap:3px; padding:2px 7px; border-radius:3px; font-size:10px; font-weight:600; white-space:nowrap; }
+    .bdg-r{background:var(--red-soft);color:var(--red);border:1px solid var(--red-mid)}
+    .bdg-y{background:var(--yellow-soft);color:var(--yellow);border:1px solid #f5c54230}
+    .bdg-g{background:var(--green-soft);color:var(--green);border:1px solid #00d68f25}
+
+    /* redness bar */
+    .ri-wrap{display:flex;align-items:center;gap:7px;min-width:130px}
+    .ri-val{font-family:var(--font-mono);font-size:12px;font-weight:700;min-width:40px}
+    .ri-val.r{color:var(--red)} .ri-val.y{color:var(--yellow)} .ri-val.g{color:var(--green)}
+    .bar-bg{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden}
+    .bar-fill{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+    .bar-fill.r{background:linear-gradient(90deg,var(--orange),var(--red))}
+    .bar-fill.y{background:var(--yellow)}
+    .bar-fill.g{background:var(--green)}
+
+    /* mono numbers */
+    .mono{font-family:var(--font-mono);font-size:12px}
+    .pos{color:var(--green)} .neg{color:var(--red)} .neu{color:var(--text-muted)}
+
+    /* holdings chips – top 10 */
+    .chips{display:flex;gap:2px;flex-wrap:wrap;max-width:260px}
+    .chip{font-family:var(--font-mono);font-size:9px;padding:2px 4px;border-radius:2px;white-space:nowrap;line-height:1.4}
+    .chip-r{background:var(--red-soft);color:var(--red)}
+    .chip-g{background:var(--green-soft);color:var(--green)}
+    .chip-n{background:var(--bg4);color:var(--text-muted)}
+
+    /* action btn */
+    .btn-dca{display:inline-flex;align-items:center;gap:4px;padding:5px 13px;border-radius:4px;font-size:11px;font-weight:600;background:var(--red);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:.16s;white-space:nowrap}
+    .btn-dca:hover{background:#ff1a3e;box-shadow:0 0 14px var(--red-mid);transform:translateY(-1px)}
+    .btn-dca.soft{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+    .btn-dca.soft:hover{border-color:var(--green);color:var(--green);box-shadow:none;transform:none}
+
+    /* loading / error / empty */
+    .loading-wrap{padding:80px;text-align:center}
+    .spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loading-text{font-size:13px;color:var(--text-muted)}
+    .empty-row td{padding:48px;text-align:center;color:var(--text-muted)}
+
+    /* tooltip */
+    [data-tip]{position:relative;cursor:help}
+    [data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);color:var(--text);font-size:10px;padding:4px 8px;border-radius:4px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10}
+    [data-tip]:hover::after{opacity:1}
+
+    /* footer banner */
+    .footer-banner{position:fixed;bottom:0;left:0;right:0;z-index:50;background:linear-gradient(135deg,#1a0a0f,#0f0a1a);border-top:1px solid var(--red-mid);padding:11px 20px;display:flex;align-items:center;justify-content:center;gap:14px;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+    .footer-banner.vis{transform:translateY(0)}
+    .fb-text{font-size:12px;color:var(--text-muted)}
+    .fb-text strong{color:var(--text)}
+    .fb-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:15px;padding:4px}
+    .fb-close:hover{color:var(--text)}
+    .fspc{height:60px}
+
+    @media(max-width:1100px){.hide-lg{display:none}}
+    @media(max-width:800px){.hide-md{display:none}}
+    @media(max-width:600px){.hide-sm{display:none}.hdr-nav{display:none}.hero-in{flex-direction:column;gap:14px}td,th{padding:9px 8px}}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">F</div>
+      <span class="logo-text">Fund<span>DCA</span></span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html"       class="nav-a on">🔴 Chỉ số Đỏ</a>
+      <a href="fees.html"        class="nav-a">💰 So sánh Phí</a>
+      <a href="sectors.html"     class="nav-a">🏭 Theo Ngành</a>
+      <a href="performance.html" class="nav-a">📈 Hiệu suất</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="upd-badge"><span class="dot"></span><span id="upd-time">Đang tải...</span></span>
+      <a href="#" class="btn-aff aff-link" id="hdr-aff">↗ Mở tài khoản</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <h1 class="hero-title">Săn <span class="hl">Sale</span> Chứng Chỉ Quỹ</h1>
+      <p class="hero-sub">Chỉ số Đỏ theo thời gian thực của 30 quỹ cổ phiếu mở. Cập nhật mỗi 1h trong giờ giao dịch.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-v"    id="s-total">--</div><div class="stat-l">Quỹ theo dõi</div></div>
+      <div class="stat"><div class="stat-v r"  id="s-red">--</div><div class="stat-l">Đỏ mạnh (≥1.5%)</div></div>
+      <div class="stat"><div class="stat-v y"  id="s-yellow">--</div><div class="stat-l">Đỏ nhẹ</div></div>
+      <div class="stat"><div class="stat-v g"  id="s-green">--</div><div class="stat-l">Xanh</div></div>
+      <div class="stat"><div class="stat-v"    id="s-avg">--</div><div class="stat-l">Redness TB</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="tb-in">
+    <span class="tb-lbl">Lọc:</span>
+    <div class="flt-grp">
+      <button class="flt on"  data-f="all">Tất cả</button>
+      <button class="flt"     data-f="red">🔴 Đỏ mạnh</button>
+      <button class="flt"     data-f="yellow">🟡 Đỏ nhẹ</button>
+      <button class="flt"     data-f="green">🟢 Xanh</button>
+    </div>
+    <span class="tb-lbl" style="margin-left:6px">Sắp xếp:</span>
+    <select class="sort-sel" id="sort-sel">
+      <option value="redness">Đỏ nhất trước</option>
+      <option value="nav-asc">NAV thấp nhất</option>
+      <option value="perf12">Hiệu suất 1 năm</option>
+      <option value="estNav">Est. NAV giảm nhiều nhất</option>
+      <option value="asset">Tài sản lớn nhất</option>
+    </select>
+    <div class="tb-right">
+      <input type="text" class="search" id="search" placeholder="🔍  Tìm theo mã hoặc tên quỹ..." />
+      <span class="count-badge" id="count-badge">-- quỹ</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="loading-wrap" id="loading">
+    <div class="spinner"></div>
+    <p class="loading-text">Đang tải dữ liệu 30 quỹ...</p>
+  </div>
+
+  <div id="err" style="display:none;padding:60px;text-align:center">
+    <div style="font-size:32px;margin-bottom:10px">⚠️</div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:6px">Không thể tải data.json</div>
+    <div style="font-size:12px;color:var(--text-muted)">Hãy chạy crawler.py trước hoặc kiểm tra file public/data.json</div>
+  </div>
+
+  <div class="tbl-wrap" id="tbl-wrap" style="display:none">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:36px">#</th>
+          <th data-col="name">Quỹ</th>
+          <th data-col="badge">Tình trạng</th>
+          <th data-col="redness" class="srt">
+            Chỉ số Đỏ <span class="si">↓</span>
+            <span data-tip="Σ (tỷ trọng × |% giảm|) của các mã đang đỏ trong danh mục">ⓘ</span>
+          </th>
+          <th data-col="estNav" class="hide-md">
+            Est. NAV hôm nay
+            <span data-tip="Dự báo thay đổi NAV dựa trên giá live của Top 10 Holdings">ⓘ</span>
+          </th>
+          <th data-col="nav">NAV hiện tại</th>
+          <th data-col="navChg">vs Hôm qua</th>
+          <th data-col="perf12" class="hide-sm">1 Năm</th>
+          <th data-col="perf36" class="hide-lg">3 Năm/năm</th>
+          <th data-col="asset" class="hide-lg">Tài sản</th>
+          <th data-col="holdings" class="hide-md">Top 10 Holdings</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<div class="fspc"></div>
+
+<!-- FOOTER BANNER -->
+<div class="footer-banner" id="fb">
+  <p class="fb-text">Chưa có tài khoản? <strong>Đăng ký Fmarket miễn phí</strong> – bắt đầu DCA ngay hôm nay 🚀</p>
+  <a href="#" class="btn-aff aff-link">↗ Mở tài khoản Fmarket</a>
+  <button class="fb-close" id="fb-close">✕</button>
+</div>
+
+<!-- CONFIG – Chỉ thay rewardLink -->
+<script>
+const AFF = {
+  rewardLink: "https://fmarket.vn/reward/007F986083194",
+  fundUrl: (c) => `https://fmarket.vn/quy/${c.toLowerCase()}`,
+  listUrl: "https://fmarket.vn/danh-sach-quy",
+};
+</script>
+
+<!-- APP -->
+<script>
+(function(){
+
+// ── Affiliate helper ───────────────────────────────────────────
+function bindAff(){
+  document.querySelectorAll(".aff-link").forEach(el=>{
+    const c=el.dataset.fund;
+    el.href=c?AFF.fundUrl(c):AFF.listUrl;
+    el.onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+  });
+}
+
+// ── Format helpers ─────────────────────────────────────────────
+const fmtNav = v=> v!=null ? Number(v).toLocaleString("vi-VN",{maximumFractionDigits:0}) : "--";
+const fmtPct = v=> v==null?"--":(v>0?"+":"")+Number(v).toFixed(2)+"%";
+const fmtBil = v=> v==null?"--":Number(v).toLocaleString("vi-VN",{maximumFractionDigits:0})+" tỷ";
+const cls    = v=> v==null?"neu":v>0?"pos":v<0?"neg":"neu";
+const riColor= r=> r>=1.5?"r":r>=0.5?"y":"g";
+
+function badgeCls(color){ return {red:"bdg-r",yellow:"bdg-y",green:"bdg-g"}[color]||"bdg-g"; }
+
+// ── Build row ──────────────────────────────────────────────────
+let MAX_RI=3;
+
+function buildRow(f, rank){
+  const ri   = f.rednessIndex||0;
+  const color= riColor(ri);
+  const b    = f.badge||{emoji:"🟢",label:"Xanh",color:"green"};
+  const p    = f.performance||{};
+  const H    = f.topHoldings||[];
+  const est  = f.estimatedNavChange;
+  const isRed= ri>=1.5;
+  const barW = Math.min((ri/MAX_RI)*100,100);
+
+  // All 10 holdings chips
+  const chipsHtml = H.length
+    ? H.map(h=>{
+        const c = h.changeFromPreviousPercent;
+        const cls2 = c==null?"chip-n":c<0?"chip-r":"chip-g";
+        const sign = c!=null&&c>0?"+":"";
+        const pctTxt = c!=null? ` ${sign}${Number(c).toFixed(1)}%`:"";
+        return `<span class="chip ${cls2}" title="${h.industry||""}">${h.stockCode}${pctTxt}</span>`;
+      }).join("")
+    : `<span style="color:var(--text-dim);font-size:10px">Chưa có dữ liệu</span>`;
+
+  return `
+  <tr class="${isRed?"row-red":""}" style="animation-delay:${(rank-1)*30}ms">
+    <td class="rank ${rank<=3?"top3":""}">${rank}</td>
+    <td>
+      <div class="fc">${f.code}</div>
+      <div class="fn" title="${f.name}">${f.name||""}</div>
+    </td>
+    <td><span class="bdg ${badgeCls(b.color)}">${b.emoji} ${b.label}</span></td>
+    <td>
+      <div class="ri-wrap">
+        <span class="ri-val ${color}">${fmtPct(ri)}</span>
+        <div class="bar-bg"><div class="bar-fill ${color}" style="width:${barW.toFixed(1)}%"></div></div>
+      </div>
+    </td>
+    <td class="hide-md"><span class="mono ${cls(est)}">${fmtPct(est)}</span></td>
+    <td><span class="mono">${fmtNav(f.nav)}</span></td>
+    <td><span class="mono ${cls(f.navToPrevious)}">${fmtPct(f.navToPrevious)}</span></td>
+    <td class="hide-sm"><span class="mono ${cls(p.navTo12Months)}">${fmtPct(p.navTo12Months)}</span></td>
+    <td class="hide-lg"><span class="mono ${cls(p.annualizedReturn36Months)}">${fmtPct(p.annualizedReturn36Months)}</span></td>
+    <td class="hide-lg"><span class="mono" style="font-size:11px">${fmtBil(f.totalAssetBillion)}</span></td>
+    <td class="hide-md"><div class="chips">${chipsHtml}</div></td>
+    <td>
+      <a href="#" class="btn-dca aff-link ${isRed?"":"soft"}" data-fund="${f.code}">
+        ${isRed?"⚡ DCA ngay":"Xem →"}
+      </a>
+    </td>
+  </tr>`;
+}
+
+// ── State ──────────────────────────────────────────────────────
+let ALL=[], filter="all", sortBy="redness", search="";
+
+function filtered(){
+  let list=[...ALL];
+  // search
+  if(search){ const q=search.toLowerCase(); list=list.filter(f=>f.code.toLowerCase().includes(q)||(f.name||"").toLowerCase().includes(q)); }
+  // filter
+  if(filter==="red")    list=list.filter(f=>(f.rednessIndex||0)>=1.5);
+  if(filter==="yellow") list=list.filter(f=>{const r=f.rednessIndex||0;return r>=0.5&&r<1.5;});
+  if(filter==="green")  list=list.filter(f=>(f.rednessIndex||0)<0.5);
+  // sort
+  if(sortBy==="redness") list.sort((a,b)=>(b.rednessIndex||0)-(a.rednessIndex||0));
+  if(sortBy==="nav-asc") list.sort((a,b)=>(a.nav||0)-(b.nav||0));
+  if(sortBy==="perf12")  list.sort((a,b)=>((b.performance||{}).navTo12Months||0)-((a.performance||{}).navTo12Months||0));
+  if(sortBy==="estNav")  list.sort((a,b)=>(a.estimatedNavChange||0)-(b.estimatedNavChange||0));
+  if(sortBy==="asset")   list.sort((a,b)=>(b.totalAssetBillion||0)-(a.totalAssetBillion||0));
+  return list;
+}
+
+function render(){
+  const list=filtered();
+  const tbody=document.getElementById("tbody");
+  document.getElementById("count-badge").textContent=list.length+" quỹ";
+  if(!list.length){
+    tbody.innerHTML=`<tr class="empty-row"><td colspan="12">Không tìm thấy quỹ nào 🔍 – Thử bỏ bộ lọc</td></tr>`;
+  } else {
+    tbody.innerHTML=list.map((f,i)=>buildRow(f,i+1)).join("");
+  }
+  bindAff();
+}
+
+function updateStats(){
+  const r=ALL.filter(f=>(f.rednessIndex||0)>=1.5).length;
+  const y=ALL.filter(f=>{const v=f.rednessIndex||0;return v>=0.5&&v<1.5;}).length;
+  const g=ALL.filter(f=>(f.rednessIndex||0)<0.5).length;
+  const avg=ALL.reduce((s,f)=>s+(f.rednessIndex||0),0)/(ALL.length||1);
+  document.getElementById("s-total").textContent=ALL.length;
+  document.getElementById("s-red").textContent=r;
+  document.getElementById("s-yellow").textContent=y;
+  document.getElementById("s-green").textContent=g;
+  document.getElementById("s-avg").textContent=avg.toFixed(2)+"%";
+}
+
+// ── Load ───────────────────────────────────────────────────────
+async function load(){
+  try{
+    const res=await fetch("data.json?t="+Date.now());
+    if(!res.ok) throw new Error(res.status);
+    const json=await res.json();
+    ALL=json.funds||[];
+    MAX_RI=Math.max(...ALL.map(f=>f.rednessIndex||0),3);
+    document.getElementById("upd-time").textContent="Cập nhật "+(json.lastUpdatedStr||"--");
+    updateStats();
+    render();
+    document.getElementById("loading").style.display="none";
+    document.getElementById("tbl-wrap").style.display="block";
+    setTimeout(()=>document.getElementById("fb").classList.add("vis"),3500);
+  }catch(e){
+    console.error(e);
+    document.getElementById("loading").style.display="none";
+    document.getElementById("err").style.display="block";
+  }
+}
+
+// ── Events ─────────────────────────────────────────────────────
+document.querySelectorAll(".flt").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".flt").forEach(b=>b.classList.remove("on","on-red"));
+    const f=btn.dataset.f;
+    btn.classList.add(f==="red"?"on-red":"on");
+    filter=f; render();
+  });
+});
+
+document.getElementById("sort-sel").addEventListener("change",e=>{ sortBy=e.target.value; render(); });
+
+let st;
+document.getElementById("search").addEventListener("input",e=>{
+  clearTimeout(st);
+  st=setTimeout(()=>{ search=e.target.value.trim(); render(); },200);
+});
+
+document.getElementById("fb-close").addEventListener("click",()=>document.getElementById("fb").classList.remove("vis"));
+
+// Header aff
+const ha=document.getElementById("hdr-aff");
+ha.href=AFF.listUrl;
+ha.onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+
+// ── Boot ───────────────────────────────────────────────────────
+load();
+})();
+</script>
+</body>
+</html>
