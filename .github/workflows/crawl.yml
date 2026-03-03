@@ -2,17 +2,17 @@ name: Crawl Fund Data
 
 on:
   schedule:
-    # Múi giờ GitHub Actions là UTC, Việt Nam = UTC+7
-    # Chỉ chạy T2-T6 (1-5)
-    - cron: "30 2 * * 1-5"   # 09:30 ICT
-    - cron: "30 3 * * 1-5"   # 10:30 ICT
-    - cron: "30 4 * * 1-5"   # 11:30 ICT
-    - cron: "30 6 * * 1-5"   # 13:30 ICT
-    - cron: "30 7 * * 1-5"   # 14:30 ICT ← Quan trọng (trước giờ chốt 14:40)
-    - cron: "30 8 * * 1-5"   # 15:30 ICT (NAV cuối ngày)
+    # UTC+7 = VN. Chạy mỗi 1h, T2-T6, từ 8:00 đến 15:00 ICT (1:00-8:00 UTC)
+    - cron: "0 1 * * 1-5"   # 08:00 ICT
+    - cron: "0 2 * * 1-5"   # 09:00 ICT
+    - cron: "0 3 * * 1-5"   # 10:00 ICT
+    - cron: "0 4 * * 1-5"   # 11:00 ICT
+    - cron: "0 5 * * 1-5"   # 12:00 ICT
+    - cron: "0 6 * * 1-5"   # 13:00 ICT
+    - cron: "0 7 * * 1-5"   # 14:00 ICT
+    - cron: "0 8 * * 1-5"   # 15:00 ICT (NAV cuối ngày)
 
-  # Cho phép chạy thủ công từ GitHub UI (để test)
-  workflow_dispatch:
+  workflow_dispatch:  # Cho phép chạy thủ công từ GitHub UI
 
 jobs:
   crawl:
@@ -45,7 +45,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions Bot"
-          git add public/data.json
-          # Chỉ commit nếu có thay đổi
-          git diff --staged --quiet || git commit -m "chore: cập nhật data.json lúc $(TZ='Asia/Ho_Chi_Minh' date '+%H:%M %d/%m/%Y')"
+          git add -f public/data.json
+          git diff --staged --quiet || git commit -m "data: cập nhật $(TZ='Asia/Ho_Chi_Minh' date '+%H:%M %d/%m/%Y')"
           git push
