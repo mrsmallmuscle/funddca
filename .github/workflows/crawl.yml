@@ -1,0 +1,51 @@
+name: Crawl Fund Data
+
+on:
+  schedule:
+    # Múi giờ GitHub Actions là UTC, Việt Nam = UTC+7
+    # Chỉ chạy T2-T6 (1-5)
+    - cron: "30 2 * * 1-5"   # 09:30 ICT
+    - cron: "30 3 * * 1-5"   # 10:30 ICT
+    - cron: "30 4 * * 1-5"   # 11:30 ICT
+    - cron: "30 6 * * 1-5"   # 13:30 ICT
+    - cron: "30 7 * * 1-5"   # 14:30 ICT ← Quan trọng (trước giờ chốt 14:40)
+    - cron: "30 8 * * 1-5"   # 15:30 ICT (NAV cuối ngày)
+
+  # Cho phép chạy thủ công từ GitHub UI (để test)
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('crawler/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install -r crawler/requirements.txt
+
+      - name: Run crawler
+        run: python crawler/crawler.py
+
+      - name: Commit và push data.json
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add public/data.json
+          # Chỉ commit nếu có thay đổi
+          git diff --staged --quiet || git commit -m "chore: cập nhật data.json lúc $(TZ='Asia/Ho_Chi_Minh' date '+%H:%M %d/%m/%Y')"
+          git push
