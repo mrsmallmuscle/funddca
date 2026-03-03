@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiệu suất – FundDCA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#0a0c0f; --bg2:#111318; --bg3:#181c23; --bg4:#1e2330;
+      --border:#1f2530; --border2:#2a3040;
+      --text:#e8eaf0; --text-muted:#6b7590; --text-dim:#3d4560;
+      --red:#ff3b5c; --red-soft:#ff3b5c1a; --red-mid:#ff3b5c35;
+      --orange:#ff7a30; --yellow:#f5c542; --yellow-soft:#f5c54218;
+      --green:#00d68f; --green-soft:#00d68f14; --green-mid:#00d68f30;
+      --accent:#4a9eff; --accent-soft:#4a9eff18;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-mono:'Space Mono',monospace;
+      --font-body:'Instrument Sans',sans-serif;
+    }
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+
+    .hdr{position:sticky;top:0;z-index:100;background:rgba(10,12,15,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 20px;}
+    .hdr-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:54px;gap:12px;}
+    .logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+    .logo-mark{width:30px;height:30px;background:linear-gradient(135deg,var(--red),var(--orange));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:17px;color:#fff;}
+    .logo-text{font-family:var(--font-display);font-size:20px;letter-spacing:1px;color:var(--text);}
+    .logo-text span{color:var(--red);}
+    .hdr-nav{display:flex;gap:2px;}
+    .nav-a{padding:5px 11px;border-radius:5px;font-size:12px;font-weight:500;color:var(--text-muted);text-decoration:none;transition:.15s;}
+    .nav-a:hover,.nav-a.on{color:var(--text);background:var(--bg3);}
+    .nav-a.on{color:var(--accent);}
+    .btn-aff{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:5px;font-size:12px;font-weight:600;background:var(--red);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:.18s;}
+    .btn-aff:hover{background:#ff1a3e;transform:translateY(-1px);}
+
+    .hero{border-bottom:1px solid var(--border);padding:20px;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);}
+    .hero-in{max-width:1400px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+    .hero-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,44px);line-height:1;letter-spacing:1px;}
+    .hero-title .hl{color:var(--accent);}
+    .hero-sub{font-size:12px;color:var(--text-muted);margin-top:5px;line-height:1.6;max-width:520px;}
+    .period-tabs{display:flex;gap:3px;}
+    .ptab{padding:5px 14px;border-radius:5px;font-size:12px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:.14s;font-family:var(--font-mono);}
+    .ptab:hover{border-color:var(--border2);color:var(--text);}
+    .ptab.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);}
+
+    .toolbar{padding:11px 20px;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:54px;z-index:90;}
+    .tb-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .tb-lbl{font-size:11px;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+    .search{padding:4px 11px;border-radius:4px;font-size:12px;border:1px solid var(--border);background:var(--bg3);color:var(--text);outline:none;width:200px;transition:.15s;}
+    .search::placeholder{color:var(--text-dim)}.search:focus{border-color:var(--border2)}
+    .flt-grp{display:flex;gap:3px;}
+    .flt{padding:4px 11px;border-radius:4px;font-size:11px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:.12s;}
+    .flt:hover{border-color:var(--border2);color:var(--text);}
+    .flt.on{background:var(--bg3);border-color:var(--border2);color:var(--text);}
+    .flt.on-g{background:var(--green-soft);border-color:var(--green-mid);color:var(--green);}
+    .flt.on-r{background:var(--red-soft);border-color:var(--red-mid);color:var(--red);}
+    .tb-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
+
+    .main{max-width:1400px;margin:0 auto;padding:20px;}
+
+    /* BAR CHART SECTION */
+    .chart-section{margin-bottom:28px;}
+    .chart-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);margin-bottom:12px;}
+    .chart-scroll{overflow-x:auto;padding-bottom:4px;}
+    .chart-wrap{min-width:600px;}
+    .bar-chart{display:flex;flex-direction:column;gap:5px;}
+    .bar-row{display:flex;align-items:center;gap:8px;}
+    .bar-code{font-family:var(--font-mono);font-size:11px;font-weight:700;min-width:80px;text-align:right;white-space:nowrap;}
+    .bar-outer{flex:1;height:20px;background:var(--bg4);border-radius:3px;overflow:hidden;position:relative;}
+    .bar-inner{height:100%;border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:6px;min-width:2px;}
+    .bar-label{font-family:var(--font-mono);font-size:10px;font-weight:700;white-space:nowrap;position:absolute;left:6px;top:50%;transform:translateY(-50%);pointer-events:none;}
+    .bar-val{font-family:var(--font-mono);font-size:11px;min-width:55px;text-align:left;}
+    .pos{color:var(--green)}.neg{color:var(--red)}.neu{color:var(--text-muted)}
+
+    /* TABLE */
+    .tbl-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+    table{width:100%;border-collapse:collapse;}
+    thead{background:var(--bg2);border-bottom:1px solid var(--border);}
+    thead th{padding:10px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);text-align:left;white-space:nowrap;cursor:pointer;user-select:none;}
+    thead th:hover{color:var(--text)}
+    thead th.srt-col{color:var(--accent);}
+    tbody tr{border-bottom:1px solid var(--border);transition:background .12s;animation:fadeIn .2s ease both;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:var(--bg2)}
+    td{padding:10px 12px;font-size:12px;vertical-align:middle;}
+
+    .fc{font-family:var(--font-mono);font-size:13px;font-weight:700;}
+    .fn{font-size:10px;color:var(--text-muted);margin-top:1px;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .mono{font-family:var(--font-mono);font-size:12px;}
+
+    /* rank medal */
+    .medal{font-family:var(--font-mono);font-size:11px;text-align:center;width:28px;}
+    .m1{color:#ffd700}.m2{color:#c0c0c0}.m3{color:#cd7f32}
+
+    /* perf cell with mini bar */
+    .perf-cell{display:flex;align-items:center;gap:5px;}
+    .perf-bar{width:50px;height:3px;background:var(--bg4);border-radius:2px;overflow:hidden;flex:none;}
+    .perf-bar-fill{height:100%;border-radius:2px;}
+
+    .btn-dca{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:4px;font-size:11px;font-weight:600;background:transparent;color:var(--text-muted);text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:.14s;white-space:nowrap;}
+    .btn-dca:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-dca.hot{background:var(--red-soft);border-color:var(--red-mid);color:var(--red);}
+
+    .spinner-wrap{padding:80px;text-align:center;}
+    .spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .empty{padding:48px;text-align:center;color:var(--text-muted);}
+
+    [data-tip]{position:relative;cursor:help}
+    [data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);color:var(--text);font-size:10px;padding:4px 8px;border-radius:4px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .12s;z-index:10;}
+    [data-tip]:hover::after{opacity:1;}
+
+    @media(max-width:1100px){.hide-lg{display:none}}
+    @media(max-width:800px){.hide-md{display:none}}
+    @media(max-width:600px){.hdr-nav{display:none}.hide-sm{display:none}}
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">F</div>
+      <span class="logo-text">Fund<span>DCA</span></span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html"       class="nav-a">🔴 Chỉ số Đỏ</a>
+      <a href="fees.html"        class="nav-a">💰 So sánh Phí</a>
+      <a href="sectors.html"     class="nav-a">🏭 Theo Ngành</a>
+      <a href="performance.html" class="nav-a on">📈 Hiệu suất</a>
+    </nav>
+    <a href="#" class="btn-aff" id="hdr-aff">↗ Mở tài khoản</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <h1 class="hero-title">So sánh <span class="hl">Hiệu suất</span></h1>
+      <p class="hero-sub">Xếp hạng 30 quỹ theo lợi nhuận từ 1 tháng đến từ khi thành lập. Chọn kỳ để cập nhật biểu đồ và bảng xếp hạng.</p>
+    </div>
+    <div class="period-tabs" id="period-tabs">
+      <button class="ptab" data-p="navTo1Months">1T</button>
+      <button class="ptab" data-p="navTo3Months">3T</button>
+      <button class="ptab" data-p="navTo6Months">6T</button>
+      <button class="ptab on" data-p="navTo12Months">1N</button>
+      <button class="ptab" data-p="navTo24Months">2N</button>
+      <button class="ptab" data-p="navTo36Months">3N</button>
+      <button class="ptab" data-p="navTo60Months">5N</button>
+      <button class="ptab" data-p="navToEstablish">Từ ĐL</button>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="tb-in">
+    <span class="tb-lbl">Lọc:</span>
+    <div class="flt-grp">
+      <button class="flt on" data-perf="all">Tất cả</button>
+      <button class="flt" data-perf="pos">🟢 Dương</button>
+      <button class="flt" data-perf="neg">🔴 Âm</button>
+    </div>
+    <div class="tb-right">
+      <input type="text" class="search" id="search" placeholder="🔍  Tìm quỹ..." />
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);padding:3px 7px;background:var(--bg4);border:1px solid var(--border);border-radius:4px;" id="count-badge">-- quỹ</span>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="spinner-wrap" id="loading">
+    <div class="spinner"></div>
+    <p style="font-size:13px;color:var(--text-muted)">Đang tải dữ liệu hiệu suất...</p>
+  </div>
+
+  <div id="content" style="display:none">
+    <!-- BAR CHART -->
+    <div class="chart-section">
+      <div class="chart-title" id="chart-title">Hiệu suất 1 Năm – Top 30 Quỹ</div>
+      <div class="chart-scroll"><div class="chart-wrap"><div class="bar-chart" id="bar-chart"></div></div></div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:36px">#</th>
+            <th>Quỹ</th>
+            <th id="th-active" class="srt-col">Kỳ được chọn</th>
+            <th class="hide-sm">1 Tháng</th>
+            <th class="hide-sm">3 Tháng</th>
+            <th class="hide-md">6 Tháng</th>
+            <th class="hide-md">1 Năm</th>
+            <th class="hide-lg">2 Năm</th>
+            <th class="hide-lg">3 Năm</th>
+            <th class="hide-lg" data-tip="Lợi nhuận kép hàng năm 3 năm">CAGR 3N <span style="opacity:.4">ⓘ</span></th>
+            <th class="hide-lg">Từ ĐL</th>
+            <th>Redness</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script>
+const AFF = {
+  rewardLink: "https://fmarket.vn/reward/007F986083194",
+  fundUrl: (c) => `https://fmarket.vn/quy/${c.toLowerCase()}`,
+};
+</script>
+<script>
+(function(){
+  document.getElementById("hdr-aff").onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+
+  const fmtPct=v=>v==null?"--":(v>0?"+":"")+Number(v).toFixed(2)+"%";
+  const cls=v=>v==null?"neu":v>0?"pos":v<0?"neg":"neu";
+  const riColor=r=>r>=1.5?"var(--red)":r>=0.5?"var(--yellow)":"var(--green)";
+
+  const PERIOD_LABELS = {
+    navTo1Months:"1 Tháng", navTo3Months:"3 Tháng", navTo6Months:"6 Tháng",
+    navTo12Months:"1 Năm", navTo24Months:"2 Năm", navTo36Months:"3 Năm",
+    navTo60Months:"5 Năm", navToEstablish:"Từ khi ĐL"
+  };
+
+  let ALL=[], period="navTo12Months", perfFilter="all", search="";
+  let MAX_PERF=50;
+
+  function getPerf(f){ return (f.performance||{})[period]; }
+
+  function filtered(){
+    let list=[...ALL].filter(f=>getPerf(f)!=null);
+    if(perfFilter==="pos") list=list.filter(f=>(getPerf(f)||0)>0);
+    if(perfFilter==="neg") list=list.filter(f=>(getPerf(f)||0)<0);
+    if(search){ const q=search.toLowerCase(); list=list.filter(f=>f.code.toLowerCase().includes(q)||(f.name||"").toLowerCase().includes(q)); }
+    list.sort((a,b)=>(getPerf(b)||0)-(getPerf(a)||0));
+    return list;
+  }
+
+  function buildBarChart(list){
+    const maxAbs=Math.max(...list.map(f=>Math.abs(getPerf(f)||0)),1);
+    document.getElementById("bar-chart").innerHTML=list.map((f,i)=>{
+      const v=getPerf(f)||0;
+      const w=(Math.abs(v)/maxAbs*100).toFixed(1);
+      const color=v>0?"var(--green)":v<0?"var(--red)":"var(--text-dim)";
+      const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":(i+1).toString();
+      return `<div class="bar-row" style="animation-delay:${i*15}ms">
+        <div class="bar-code" style="color:${i<3?"var(--text)":"var(--text-muted)"}">${medal} ${f.code}</div>
+        <div class="bar-outer">
+          <div class="bar-inner" style="width:${w}%;background:${color}15;border-right:2px solid ${color}">
+            <span class="bar-label" style="color:${color}">${fmtPct(v)}</span>
+          </div>
+        </div>
+        <span class="bar-val ${cls(v)}">${fmtPct(v)}</span>
+      </div>`;
+    }).join("");
+  }
+
+  function perfMiniBar(v, maxAbs){
+    const w=maxAbs>0?Math.min(Math.abs(v)/maxAbs*100,100):0;
+    const color=v>0?"var(--green)":v<0?"var(--red)":"var(--text-dim)";
+    return `<div class="perf-cell"><span class="mono ${cls(v)}">${fmtPct(v)}</span><div class="perf-bar"><div class="perf-bar-fill" style="width:${w.toFixed(0)}%;background:${color}"></div></div></div>`;
+  }
+
+  function buildTable(list){
+    const allVals=list.map(f=>getPerf(f)||0);
+    const maxAbs=Math.max(...allVals.map(Math.abs),1);
+
+    document.getElementById("count-badge").textContent=list.length+" quỹ";
+    const tbody=document.getElementById("tbody");
+    if(!list.length){ tbody.innerHTML=`<tr><td colspan="13" class="empty">Không có dữ liệu cho kỳ này</td></tr>`; return; }
+
+    const p=(f,k)=>(f.performance||{})[k];
+    tbody.innerHTML=list.map((f,i)=>{
+      const v=getPerf(f)||0;
+      const ri=f.rednessIndex||0;
+      const medal=i<3?["m1","m2","m3"][i]:"";
+      return `<tr style="animation-delay:${i*20}ms">
+        <td class="medal ${medal}">${i===0?"🥇":i===1?"🥈":i===2?"🥉":i+1}</td>
+        <td>
+          <div class="fc">${f.code}</div>
+          <div class="fn" title="${f.name||""}">${f.name||""}</div>
+        </td>
+        <td>${perfMiniBar(v,maxAbs)}</td>
+        <td class="hide-sm"><span class="mono ${cls(p(f,'navTo1Months'))}">${fmtPct(p(f,'navTo1Months'))}</span></td>
+        <td class="hide-sm"><span class="mono ${cls(p(f,'navTo3Months'))}">${fmtPct(p(f,'navTo3Months'))}</span></td>
+        <td class="hide-md"><span class="mono ${cls(p(f,'navTo6Months'))}">${fmtPct(p(f,'navTo6Months'))}</span></td>
+        <td class="hide-md"><span class="mono ${cls(p(f,'navTo12Months'))}">${fmtPct(p(f,'navTo12Months'))}</span></td>
+        <td class="hide-lg"><span class="mono ${cls(p(f,'navTo24Months'))}">${fmtPct(p(f,'navTo24Months'))}</span></td>
+        <td class="hide-lg"><span class="mono ${cls(p(f,'navTo36Months'))}">${fmtPct(p(f,'navTo36Months'))}</span></td>
+        <td class="hide-lg"><span class="mono ${cls(p(f,'annualizedReturn36Months'))}">${fmtPct(p(f,'annualizedReturn36Months'))}</span></td>
+        <td class="hide-lg"><span class="mono ${cls(p(f,'navToEstablish'))}">${fmtPct(p(f,'navToEstablish'))}</span></td>
+        <td><span class="mono" style="font-size:11px;color:${riColor(ri)}">${ri.toFixed(2)}%</span></td>
+        <td><a href="#" class="btn-dca ${ri>=1.5?"hot":""} aff-link" data-fund="${f.code}">${ri>=1.5?"⚡ DCA":"Xem →"}</a></td>
+      </tr>`;
+    }).join("");
+
+    // bind aff
+    document.querySelectorAll(".aff-link").forEach(el=>{
+      el.href=AFF.fundUrl(el.dataset.fund||"");
+      el.onclick=e=>{ e.preventDefault(); window.open(AFF.rewardLink,"_blank"); };
+    });
+  }
+
+  function render(){
+    const list=filtered();
+    document.getElementById("chart-title").textContent=`Hiệu suất ${PERIOD_LABELS[period]||period} – ${list.length} Quỹ`;
+    document.getElementById("th-active").textContent=PERIOD_LABELS[period]||period;
+    buildBarChart(list);
+    buildTable(list);
+  }
+
+  // period tabs
+  document.querySelectorAll(".ptab").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      document.querySelectorAll(".ptab").forEach(b=>b.classList.remove("on"));
+      btn.classList.add("on");
+      period=btn.dataset.p;
+      render();
+    });
+  });
+
+  // perf filter
+  document.querySelectorAll(".flt[data-perf]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      document.querySelectorAll(".flt[data-perf]").forEach(b=>b.classList.remove("on","on-g","on-r"));
+      perfFilter=btn.dataset.perf;
+      btn.classList.add(perfFilter==="pos"?"on-g":perfFilter==="neg"?"on-r":"on");
+      render();
+    });
+  });
+
+  let st;
+  document.getElementById("search").addEventListener("input",e=>{ clearTimeout(st); st=setTimeout(()=>{ search=e.target.value.trim(); render(); },200); });
+
+  async function load(){
+    try{
+      const res=await fetch("data.json?t="+Date.now());
+      if(!res.ok) throw new Error();
+      const json=await res.json();
+      ALL=json.funds||[];
+      render();
+      document.getElementById("loading").style.display="none";
+      document.getElementById("content").style.display="block";
+    }catch(e){
+      document.getElementById("loading").innerHTML=`<div style="padding:60px;text-align:center;color:var(--red)">⚠️ Không tải được data.json</div>`;
+    }
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>
