@@ -1,7 +1,7 @@
 {
-  "lastUpdated": "2026-04-22T14:51:44.584316+07:00",
-  "lastUpdatedStr": "14:51 22/04/2026",
-  "nextUpdate": "2026-04-22T15:51:44.584316+07:00",
+  "lastUpdated": "2026-04-22T15:26:41.331615+07:00",
+  "lastUpdatedStr": "15:26 22/04/2026",
+  "nextUpdate": "2026-04-22T16:26:41.331615+07:00",
   "tradingDate": "2026-04-22",
   "totalFunds": 30,
   "failedFunds": [],
@@ -1414,395 +1414,6 @@
       "closedOrderBookAt": "14:40"
     },
     {
-      "code": "BVPF",
-      "name": "QUỸ ĐẦU TƯ CỔ PHIẾU TRIỂN VỌNG BẢO VIỆT",
-      "shortName": "BVPF",
-      "fundType": "Quỹ cổ phiếu",
-      "nav": 23189.0,
-      "navToPrevious": 0.87,
-      "riskLevel": "Cao",
-      "managementFee": 1.5,
-      "totalAssetBillion": 189.4,
-      "rednessIndex": 0.2981,
-      "estimatedNavChange": -0.1878,
-      "estimatedNav": 23145.45,
-      "badge": {
-        "emoji": "🟢",
-        "label": "Xanh – Thị trường tốt",
-        "color": "green"
-      },
-      "performance": {
-        "navTo1Months": 2.73,
-        "navTo3Months": -4.82,
-        "navTo6Months": 3.76,
-        "navTo12Months": 17.87,
-        "navTo24Months": 24.51,
-        "navTo36Months": 51.33,
-        "navTo60Months": 58.25,
-        "navTo7Years": 106.47,
-        "navToEstablish": 131.89,
-        "annualizedReturn36Months": 14.81
-      },
-      "fees": {
-        "buyPct": 0.5,
-        "sell": [
-          {
-            "label": "< 3 tháng",
-            "months_min": 0,
-            "fee_pct": 0.5
-          },
-          {
-            "label": "3-6 tháng",
-            "months_min": 3,
-            "fee_pct": 0.4
-          },
-          {
-            "label": "6-12 tháng",
-            "months_min": 6,
-            "fee_pct": 0.3
-          },
-          {
-            "label": ">= 12 tháng",
-            "months_min": 12,
-            "fee_pct": 0.0
-          }
-        ],
-        "managementPct": 1.5
-      },
-      "topHoldings": [
-        {
-          "stockCode": "ACB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 12.23,
-          "price": 23.6,
-          "changeFromPrevious": -0.15,
-          "changeFromPreviousPercent": -0.63,
-          "isRed": true
-        },
-        {
-          "stockCode": "FPT",
-          "industry": "Công nghệ và thông tin",
-          "netAssetPercent": 8.16,
-          "price": 74.6,
-          "changeFromPrevious": -0.5,
-          "changeFromPreviousPercent": -0.67,
-          "isRed": true
-        },
-        {
-          "stockCode": "MBB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 7.62,
-          "price": 26.2,
-          "changeFromPrevious": -0.1,
-          "changeFromPreviousPercent": -0.38,
-          "isRed": true
-        },
-        {
-          "stockCode": "QTP",
-          "industry": "Tiện ích",
-          "netAssetPercent": 6.84,
-          "price": 12.8,
-          "changeFromPrevious": -0.2,
-          "changeFromPreviousPercent": -1.54,
-          "isRed": true
-        },
-        {
-          "stockCode": "TCB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 5.01,
-          "price": 33.0,
-          "changeFromPrevious": 0.3,
-          "changeFromPreviousPercent": 0.92,
-          "isRed": false
-        },
-        {
-          "stockCode": "MWG",
-          "industry": "Bán lẻ",
-          "netAssetPercent": 4.99,
-          "price": 86.4,
-          "changeFromPrevious": 0.8,
-          "changeFromPreviousPercent": 0.94,
-          "isRed": false
-        },
-        {
-          "stockCode": "HCM",
-          "industry": "Chứng khoán",
-          "netAssetPercent": 4.83,
-          "price": 27.25,
-          "changeFromPrevious": -0.05,
-          "changeFromPreviousPercent": -0.18,
-          "isRed": true
-        },
-        {
-          "stockCode": "IJC",
-          "industry": "Bất động sản",
-          "netAssetPercent": 4.78,
-          "price": 10.25,
-          "changeFromPrevious": -0.05,
-          "changeFromPreviousPercent": -0.49,
-          "isRed": true
-        },
-        {
-          "stockCode": "CTG",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 4.74,
-          "price": 34.9,
-          "changeFromPrevious": 0.05,
-          "changeFromPreviousPercent": 0.14,
-          "isRed": false
-        },
-        {
-          "stockCode": "VGG",
-          "industry": "Sản xuất Hàng gia dụng",
-          "netAssetPercent": 4.46,
-          "price": 42.4,
-          "changeFromPrevious": 0.1,
-          "changeFromPreviousPercent": 0.24,
-          "isRed": false
-        }
-      ],
-      "industries": [
-        {
-          "industry": "Ngân hàng",
-          "assetPercent": 31.51
-        },
-        {
-          "industry": "Công nghệ và thông tin",
-          "assetPercent": 8.16
-        },
-        {
-          "industry": "Tiện ích",
-          "assetPercent": 6.84
-        },
-        {
-          "industry": "Bán lẻ",
-          "assetPercent": 4.99
-        },
-        {
-          "industry": "Chứng khoán",
-          "assetPercent": 4.83
-        },
-        {
-          "industry": "Bất động sản",
-          "assetPercent": 4.78
-        },
-        {
-          "industry": "Sản xuất Hàng gia dụng",
-          "assetPercent": 4.46
-        },
-        {
-          "industry": "Sản xuất Phụ trợ",
-          "assetPercent": 4.42
-        },
-        {
-          "industry": "Xây dựng",
-          "assetPercent": 3.91
-        },
-        {
-          "industry": "Thực phẩm - Đồ uống",
-          "assetPercent": 3.18
-        },
-        {
-          "industry": "Sản xuất Thiết bị, máy móc",
-          "assetPercent": 2.99
-        }
-      ],
-      "website": "https://baovietfund.com.vn/san-pham/BVPF",
-      "closedOrderBookAt": "14:40"
-    },
-    {
-      "code": "VCAMDF",
-      "name": "QUỸ ĐẦU TƯ BẢN VIỆT DISCOVERY",
-      "shortName": "VCAMDF",
-      "fundType": "Quỹ cổ phiếu",
-      "nav": 11131.73,
-      "navToPrevious": -0.76,
-      "riskLevel": "Cao",
-      "managementFee": 1.5,
-      "totalAssetBillion": 54.9,
-      "rednessIndex": 0.289,
-      "estimatedNavChange": -0.2452,
-      "estimatedNav": 11104.43,
-      "badge": {
-        "emoji": "🟢",
-        "label": "Xanh – Thị trường tốt",
-        "color": "green"
-      },
-      "performance": {
-        "navTo1Months": -0.48,
-        "navTo3Months": -4.34,
-        "navTo6Months": 0.18,
-        "navTo12Months": 24.75,
-        "navTo24Months": 11.32,
-        "navTo36Months": null,
-        "navTo60Months": null,
-        "navTo7Years": null,
-        "navToEstablish": 11.32,
-        "annualizedReturn36Months": null
-      },
-      "fees": {
-        "buyPct": 0.5,
-        "sell": [
-          {
-            "label": "< 12 tháng",
-            "months_min": 0,
-            "fee_pct": 1.0
-          },
-          {
-            "label": "12-24 tháng",
-            "months_min": 12,
-            "fee_pct": 0.5
-          },
-          {
-            "label": ">= 24 tháng",
-            "months_min": 24,
-            "fee_pct": 0.0
-          }
-        ],
-        "managementPct": 1.5
-      },
-      "topHoldings": [
-        {
-          "stockCode": "VCI",
-          "industry": "Chứng khoán",
-          "netAssetPercent": 6.53,
-          "price": 26.55,
-          "changeFromPrevious": -0.25,
-          "changeFromPreviousPercent": -0.93,
-          "isRed": true
-        },
-        {
-          "stockCode": "IDC",
-          "industry": "Tiện ích",
-          "netAssetPercent": 5.5,
-          "price": 46.5,
-          "changeFromPrevious": 0.2,
-          "changeFromPreviousPercent": 0.43,
-          "isRed": false
-        },
-        {
-          "stockCode": "PVS",
-          "industry": "Khai khoáng",
-          "netAssetPercent": 4.89,
-          "price": 38.0,
-          "changeFromPrevious": -0.5,
-          "changeFromPreviousPercent": -1.3,
-          "isRed": true
-        },
-        {
-          "stockCode": "GVR",
-          "industry": "Sản xuất Nhựa - Hóa chất",
-          "netAssetPercent": 4.72,
-          "price": 32.75,
-          "changeFromPrevious": 0.1,
-          "changeFromPreviousPercent": 0.31,
-          "isRed": false
-        },
-        {
-          "stockCode": "EIB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 4.49,
-          "price": 22.65,
-          "changeFromPrevious": -0.3,
-          "changeFromPreviousPercent": -1.31,
-          "isRed": true
-        },
-        {
-          "stockCode": "MSN",
-          "industry": "Thực phẩm - Đồ uống",
-          "netAssetPercent": 4.42,
-          "price": 79.0,
-          "changeFromPrevious": 0.0,
-          "changeFromPreviousPercent": 0.0,
-          "isRed": false
-        },
-        {
-          "stockCode": "CAP",
-          "industry": "Sản xuất Phụ trợ",
-          "netAssetPercent": 4.22,
-          "price": 45.2,
-          "changeFromPrevious": -0.9,
-          "changeFromPreviousPercent": -1.95,
-          "isRed": true
-        },
-        {
-          "stockCode": "APF",
-          "industry": "Thực phẩm - Đồ uống",
-          "netAssetPercent": 4.16,
-          "price": 49.1,
-          "changeFromPrevious": 0.0,
-          "changeFromPreviousPercent": 0.0,
-          "isRed": false
-        },
-        {
-          "stockCode": "CTG",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 3.97,
-          "price": 34.9,
-          "changeFromPrevious": 0.05,
-          "changeFromPreviousPercent": 0.14,
-          "isRed": false
-        },
-        {
-          "stockCode": "BVB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 2.99,
-          "price": 12.5,
-          "changeFromPrevious": -0.1,
-          "changeFromPreviousPercent": -0.79,
-          "isRed": true
-        }
-      ],
-      "industries": [
-        {
-          "industry": "Ngân hàng",
-          "assetPercent": 18.44
-        },
-        {
-          "industry": "Thực phẩm - Đồ uống",
-          "assetPercent": 8.58
-        },
-        {
-          "industry": "Tiện ích",
-          "assetPercent": 8.21
-        },
-        {
-          "industry": "Sản xuất Nhựa - Hóa chất",
-          "assetPercent": 7.47
-        },
-        {
-          "industry": "Chứng khoán",
-          "assetPercent": 6.53
-        },
-        {
-          "industry": "Sản xuất Phụ trợ",
-          "assetPercent": 6.37
-        },
-        {
-          "industry": "Xây dựng",
-          "assetPercent": 5.03
-        },
-        {
-          "industry": "Khai khoáng",
-          "assetPercent": 4.89
-        },
-        {
-          "industry": "Tài chính khác",
-          "assetPercent": 2.56
-        },
-        {
-          "industry": "Bán lẻ",
-          "assetPercent": 2.49
-        },
-        {
-          "industry": "Nguyên vật liệu/hóa chất",
-          "assetPercent": 1.79
-        }
-      ],
-      "website": "https://vietcapital.com.vn/",
-      "closedOrderBookAt": "14:45"
-    },
-    {
       "code": "DCDS",
       "name": "QUỸ ĐẦU TƯ CHỨNG KHOÁN NĂNG ĐỘNG DC",
       "shortName": "DCDS",
@@ -2033,6 +1644,395 @@
       ],
       "website": "https://vfm.com.vn/quy-dau-tu-chung-khoan-viet-nam-vfmvf1/vf1-thong-tin-ve-quy/",
       "closedOrderBookAt": "14:30"
+    },
+    {
+      "code": "VCAMDF",
+      "name": "QUỸ ĐẦU TƯ BẢN VIỆT DISCOVERY",
+      "shortName": "VCAMDF",
+      "fundType": "Quỹ cổ phiếu",
+      "nav": 11131.73,
+      "navToPrevious": -0.76,
+      "riskLevel": "Cao",
+      "managementFee": 1.5,
+      "totalAssetBillion": 54.9,
+      "rednessIndex": 0.2654,
+      "estimatedNavChange": -0.2216,
+      "estimatedNav": 11107.06,
+      "badge": {
+        "emoji": "🟢",
+        "label": "Xanh – Thị trường tốt",
+        "color": "green"
+      },
+      "performance": {
+        "navTo1Months": -0.48,
+        "navTo3Months": -4.34,
+        "navTo6Months": 0.18,
+        "navTo12Months": 24.75,
+        "navTo24Months": 11.32,
+        "navTo36Months": null,
+        "navTo60Months": null,
+        "navTo7Years": null,
+        "navToEstablish": 11.32,
+        "annualizedReturn36Months": null
+      },
+      "fees": {
+        "buyPct": 0.5,
+        "sell": [
+          {
+            "label": "< 12 tháng",
+            "months_min": 0,
+            "fee_pct": 1.0
+          },
+          {
+            "label": "12-24 tháng",
+            "months_min": 12,
+            "fee_pct": 0.5
+          },
+          {
+            "label": ">= 24 tháng",
+            "months_min": 24,
+            "fee_pct": 0.0
+          }
+        ],
+        "managementPct": 1.5
+      },
+      "topHoldings": [
+        {
+          "stockCode": "VCI",
+          "industry": "Chứng khoán",
+          "netAssetPercent": 6.53,
+          "price": 26.55,
+          "changeFromPrevious": -0.25,
+          "changeFromPreviousPercent": -0.93,
+          "isRed": true
+        },
+        {
+          "stockCode": "IDC",
+          "industry": "Tiện ích",
+          "netAssetPercent": 5.5,
+          "price": 46.5,
+          "changeFromPrevious": 0.2,
+          "changeFromPreviousPercent": 0.43,
+          "isRed": false
+        },
+        {
+          "stockCode": "PVS",
+          "industry": "Khai khoáng",
+          "netAssetPercent": 4.89,
+          "price": 38.0,
+          "changeFromPrevious": -0.5,
+          "changeFromPreviousPercent": -1.3,
+          "isRed": true
+        },
+        {
+          "stockCode": "GVR",
+          "industry": "Sản xuất Nhựa - Hóa chất",
+          "netAssetPercent": 4.72,
+          "price": 32.75,
+          "changeFromPrevious": 0.1,
+          "changeFromPreviousPercent": 0.31,
+          "isRed": false
+        },
+        {
+          "stockCode": "EIB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 4.49,
+          "price": 22.65,
+          "changeFromPrevious": -0.3,
+          "changeFromPreviousPercent": -1.31,
+          "isRed": true
+        },
+        {
+          "stockCode": "MSN",
+          "industry": "Thực phẩm - Đồ uống",
+          "netAssetPercent": 4.42,
+          "price": 79.0,
+          "changeFromPrevious": 0.0,
+          "changeFromPreviousPercent": 0.0,
+          "isRed": false
+        },
+        {
+          "stockCode": "CAP",
+          "industry": "Sản xuất Phụ trợ",
+          "netAssetPercent": 4.22,
+          "price": 45.2,
+          "changeFromPrevious": -0.9,
+          "changeFromPreviousPercent": -1.95,
+          "isRed": true
+        },
+        {
+          "stockCode": "APF",
+          "industry": "Thực phẩm - Đồ uống",
+          "netAssetPercent": 4.16,
+          "price": 49.1,
+          "changeFromPrevious": 0.0,
+          "changeFromPreviousPercent": 0.0,
+          "isRed": false
+        },
+        {
+          "stockCode": "CTG",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 3.97,
+          "price": 34.9,
+          "changeFromPrevious": 0.05,
+          "changeFromPreviousPercent": 0.14,
+          "isRed": false
+        },
+        {
+          "stockCode": "BVB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 2.99,
+          "price": 12.6,
+          "changeFromPrevious": 0.0,
+          "changeFromPreviousPercent": 0.0,
+          "isRed": false
+        }
+      ],
+      "industries": [
+        {
+          "industry": "Ngân hàng",
+          "assetPercent": 18.44
+        },
+        {
+          "industry": "Thực phẩm - Đồ uống",
+          "assetPercent": 8.58
+        },
+        {
+          "industry": "Tiện ích",
+          "assetPercent": 8.21
+        },
+        {
+          "industry": "Sản xuất Nhựa - Hóa chất",
+          "assetPercent": 7.47
+        },
+        {
+          "industry": "Chứng khoán",
+          "assetPercent": 6.53
+        },
+        {
+          "industry": "Sản xuất Phụ trợ",
+          "assetPercent": 6.37
+        },
+        {
+          "industry": "Xây dựng",
+          "assetPercent": 5.03
+        },
+        {
+          "industry": "Khai khoáng",
+          "assetPercent": 4.89
+        },
+        {
+          "industry": "Tài chính khác",
+          "assetPercent": 2.56
+        },
+        {
+          "industry": "Bán lẻ",
+          "assetPercent": 2.49
+        },
+        {
+          "industry": "Nguyên vật liệu/hóa chất",
+          "assetPercent": 1.79
+        }
+      ],
+      "website": "https://vietcapital.com.vn/",
+      "closedOrderBookAt": "14:45"
+    },
+    {
+      "code": "BVPF",
+      "name": "QUỸ ĐẦU TƯ CỔ PHIẾU TRIỂN VỌNG BẢO VIỆT",
+      "shortName": "BVPF",
+      "fundType": "Quỹ cổ phiếu",
+      "nav": 23189.0,
+      "navToPrevious": 0.87,
+      "riskLevel": "Cao",
+      "managementFee": 1.5,
+      "totalAssetBillion": 189.4,
+      "rednessIndex": 0.2455,
+      "estimatedNavChange": -0.1351,
+      "estimatedNav": 23157.67,
+      "badge": {
+        "emoji": "🟢",
+        "label": "Xanh – Thị trường tốt",
+        "color": "green"
+      },
+      "performance": {
+        "navTo1Months": 2.73,
+        "navTo3Months": -4.82,
+        "navTo6Months": 3.76,
+        "navTo12Months": 17.87,
+        "navTo24Months": 24.51,
+        "navTo36Months": 51.33,
+        "navTo60Months": 58.25,
+        "navTo7Years": 106.47,
+        "navToEstablish": 131.89,
+        "annualizedReturn36Months": 14.81
+      },
+      "fees": {
+        "buyPct": 0.5,
+        "sell": [
+          {
+            "label": "< 3 tháng",
+            "months_min": 0,
+            "fee_pct": 0.5
+          },
+          {
+            "label": "3-6 tháng",
+            "months_min": 3,
+            "fee_pct": 0.4
+          },
+          {
+            "label": "6-12 tháng",
+            "months_min": 6,
+            "fee_pct": 0.3
+          },
+          {
+            "label": ">= 12 tháng",
+            "months_min": 12,
+            "fee_pct": 0.0
+          }
+        ],
+        "managementPct": 1.5
+      },
+      "topHoldings": [
+        {
+          "stockCode": "ACB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 12.23,
+          "price": 23.6,
+          "changeFromPrevious": -0.15,
+          "changeFromPreviousPercent": -0.63,
+          "isRed": true
+        },
+        {
+          "stockCode": "FPT",
+          "industry": "Công nghệ và thông tin",
+          "netAssetPercent": 8.16,
+          "price": 74.6,
+          "changeFromPrevious": -0.5,
+          "changeFromPreviousPercent": -0.67,
+          "isRed": true
+        },
+        {
+          "stockCode": "MBB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 7.62,
+          "price": 26.2,
+          "changeFromPrevious": -0.1,
+          "changeFromPreviousPercent": -0.38,
+          "isRed": true
+        },
+        {
+          "stockCode": "QTP",
+          "industry": "Tiện ích",
+          "netAssetPercent": 6.84,
+          "price": 12.9,
+          "changeFromPrevious": -0.1,
+          "changeFromPreviousPercent": -0.77,
+          "isRed": true
+        },
+        {
+          "stockCode": "TCB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 5.01,
+          "price": 33.0,
+          "changeFromPrevious": 0.3,
+          "changeFromPreviousPercent": 0.92,
+          "isRed": false
+        },
+        {
+          "stockCode": "MWG",
+          "industry": "Bán lẻ",
+          "netAssetPercent": 4.99,
+          "price": 86.4,
+          "changeFromPrevious": 0.8,
+          "changeFromPreviousPercent": 0.94,
+          "isRed": false
+        },
+        {
+          "stockCode": "HCM",
+          "industry": "Chứng khoán",
+          "netAssetPercent": 4.83,
+          "price": 27.25,
+          "changeFromPrevious": -0.05,
+          "changeFromPreviousPercent": -0.18,
+          "isRed": true
+        },
+        {
+          "stockCode": "IJC",
+          "industry": "Bất động sản",
+          "netAssetPercent": 4.78,
+          "price": 10.25,
+          "changeFromPrevious": -0.05,
+          "changeFromPreviousPercent": -0.49,
+          "isRed": true
+        },
+        {
+          "stockCode": "CTG",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 4.74,
+          "price": 34.9,
+          "changeFromPrevious": 0.05,
+          "changeFromPreviousPercent": 0.14,
+          "isRed": false
+        },
+        {
+          "stockCode": "VGG",
+          "industry": "Sản xuất Hàng gia dụng",
+          "netAssetPercent": 4.46,
+          "price": 42.4,
+          "changeFromPrevious": 0.1,
+          "changeFromPreviousPercent": 0.24,
+          "isRed": false
+        }
+      ],
+      "industries": [
+        {
+          "industry": "Ngân hàng",
+          "assetPercent": 31.51
+        },
+        {
+          "industry": "Công nghệ và thông tin",
+          "assetPercent": 8.16
+        },
+        {
+          "industry": "Tiện ích",
+          "assetPercent": 6.84
+        },
+        {
+          "industry": "Bán lẻ",
+          "assetPercent": 4.99
+        },
+        {
+          "industry": "Chứng khoán",
+          "assetPercent": 4.83
+        },
+        {
+          "industry": "Bất động sản",
+          "assetPercent": 4.78
+        },
+        {
+          "industry": "Sản xuất Hàng gia dụng",
+          "assetPercent": 4.46
+        },
+        {
+          "industry": "Sản xuất Phụ trợ",
+          "assetPercent": 4.42
+        },
+        {
+          "industry": "Xây dựng",
+          "assetPercent": 3.91
+        },
+        {
+          "industry": "Thực phẩm - Đồ uống",
+          "assetPercent": 3.18
+        },
+        {
+          "industry": "Sản xuất Thiết bị, máy móc",
+          "assetPercent": 2.99
+        }
+      ],
+      "website": "https://baovietfund.com.vn/san-pham/BVPF",
+      "closedOrderBookAt": "14:40"
     },
     {
       "code": "MAGEF",
@@ -2459,30 +2459,30 @@
       "name": "QUỸ ĐẦU TƯ CỔ PHIẾU HÀNG ĐẦU VCBF",
       "shortName": "VCBF-BCF",
       "fundType": "Quỹ cổ phiếu",
-      "nav": 45377.23,
-      "navToPrevious": 0.8,
+      "nav": 45042.82,
+      "navToPrevious": -0.74,
       "riskLevel": "Cao",
       "managementFee": 1.9,
       "totalAssetBillion": 1520.7,
       "rednessIndex": 0.2413,
       "estimatedNavChange": -0.144,
-      "estimatedNav": 45311.89,
+      "estimatedNav": 44977.96,
       "badge": {
         "emoji": "🟢",
         "label": "Xanh – Thị trường tốt",
         "color": "green"
       },
       "performance": {
-        "navTo1Months": 3.87,
-        "navTo3Months": -3.34,
-        "navTo6Months": 8.85,
-        "navTo12Months": 40.04,
-        "navTo24Months": 46.28,
-        "navTo36Months": 81.02,
-        "navTo60Months": 86.21,
-        "navTo7Years": 143.14,
-        "navToEstablish": 353.77,
-        "annualizedReturn36Months": 21.87
+        "navTo1Months": 3.11,
+        "navTo3Months": -3.78,
+        "navTo6Months": 8.05,
+        "navTo12Months": 38.31,
+        "navTo24Months": 45.21,
+        "navTo36Months": 79.69,
+        "navTo60Months": 82.77,
+        "navTo7Years": 141.34,
+        "navToEstablish": 350.43,
+        "annualizedReturn36Months": 21.57
       },
       "fees": {
         "buyPct": 0.0,
@@ -2672,30 +2672,30 @@
       "name": "QUỸ ĐẦU TƯ CỔ PHIẾU TĂNG TRƯỞNG VCBF",
       "shortName": "VCBF-MGF",
       "fundType": "Quỹ cổ phiếu",
-      "nav": 15187.16,
-      "navToPrevious": 0.75,
+      "nav": 15053.66,
+      "navToPrevious": -0.88,
       "riskLevel": "Cao",
       "managementFee": 1.9,
       "totalAssetBillion": 987.3,
       "rednessIndex": 0.2387,
       "estimatedNavChange": -0.1821,
-      "estimatedNav": 15159.5,
+      "estimatedNav": 15026.25,
       "badge": {
         "emoji": "🟢",
         "label": "Xanh – Thị trường tốt",
         "color": "green"
       },
       "performance": {
-        "navTo1Months": 3.04,
-        "navTo3Months": -1.07,
-        "navTo6Months": 9.53,
-        "navTo12Months": 28.68,
-        "navTo24Months": 32.32,
-        "navTo36Months": 75.1,
+        "navTo1Months": 2.13,
+        "navTo3Months": -1.44,
+        "navTo6Months": 8.57,
+        "navTo12Months": 26.21,
+        "navTo24Months": 31.16,
+        "navTo36Months": 73.56,
         "navTo60Months": null,
         "navTo7Years": null,
-        "navToEstablish": 51.87,
-        "annualizedReturn36Months": 20.53
+        "navToEstablish": 50.54,
+        "annualizedReturn36Months": 20.18
       },
       "fees": {
         "buyPct": 0.0,
@@ -2887,206 +2887,6 @@
       ],
       "website": "https://www.vcbf.com/quy-mo/cac-quy-mo/quy-dau-tu-co-phieu-hang-dau-vcbf/",
       "closedOrderBookAt": "14:00"
-    },
-    {
-      "code": "MBVF",
-      "name": "QUỸ ĐẦU TƯ GIÁ TRỊ MB CAPITAL",
-      "shortName": "MBVF",
-      "fundType": "Quỹ cổ phiếu",
-      "nav": 27480.0,
-      "navToPrevious": -0.29,
-      "riskLevel": "Trung bình-Cao",
-      "managementFee": 1.5,
-      "totalAssetBillion": 264.9,
-      "rednessIndex": 0.2368,
-      "estimatedNavChange": -0.0394,
-      "estimatedNav": 27469.17,
-      "badge": {
-        "emoji": "🟢",
-        "label": "Xanh – Thị trường tốt",
-        "color": "green"
-      },
-      "performance": {
-        "navTo1Months": 1.83,
-        "navTo3Months": -1.41,
-        "navTo6Months": 1.38,
-        "navTo12Months": 26.5,
-        "navTo24Months": 40.1,
-        "navTo36Months": 64.33,
-        "navTo60Months": 59.27,
-        "navTo7Years": 84.85,
-        "navToEstablish": 174.8,
-        "annualizedReturn36Months": 18.01
-      },
-      "fees": {
-        "buyPct": 0.0,
-        "sell": [
-          {
-            "label": "< 12 tháng",
-            "months_min": 0,
-            "fee_pct": 2.0
-          },
-          {
-            "label": "12-24 tháng",
-            "months_min": 12,
-            "fee_pct": 1.0
-          },
-          {
-            "label": ">= 24 tháng",
-            "months_min": 24,
-            "fee_pct": 0.0
-          }
-        ],
-        "managementPct": 1.5
-      },
-      "topHoldings": [
-        {
-          "stockCode": "ACB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 13.27,
-          "price": 23.6,
-          "changeFromPrevious": -0.15,
-          "changeFromPreviousPercent": -0.63,
-          "isRed": true
-        },
-        {
-          "stockCode": "TCB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 10.9,
-          "price": 33.0,
-          "changeFromPrevious": 0.3,
-          "changeFromPreviousPercent": 0.92,
-          "isRed": false
-        },
-        {
-          "stockCode": "VIB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 5.16,
-          "price": 17.3,
-          "changeFromPrevious": 0.1,
-          "changeFromPreviousPercent": 0.58,
-          "isRed": false
-        },
-        {
-          "stockCode": "TPB",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 4.41,
-          "price": 16.3,
-          "changeFromPrevious": 0.05,
-          "changeFromPreviousPercent": 0.31,
-          "isRed": false
-        },
-        {
-          "stockCode": "QTP",
-          "industry": "Tiện ích",
-          "netAssetPercent": 4.4,
-          "price": 12.8,
-          "changeFromPrevious": -0.2,
-          "changeFromPreviousPercent": -1.54,
-          "isRed": true
-        },
-        {
-          "stockCode": "CTG",
-          "industry": "Ngân hàng",
-          "netAssetPercent": 3.9,
-          "price": 34.9,
-          "changeFromPrevious": 0.05,
-          "changeFromPreviousPercent": 0.14,
-          "isRed": false
-        },
-        {
-          "stockCode": "QNS",
-          "industry": "Thực phẩm - Đồ uống",
-          "netAssetPercent": 3.43,
-          "price": 44.1,
-          "changeFromPrevious": -0.8,
-          "changeFromPreviousPercent": -1.78,
-          "isRed": true
-        },
-        {
-          "stockCode": "DPR",
-          "industry": "Sản xuất Nhựa - Hóa chất",
-          "netAssetPercent": 3.3,
-          "price": 40.45,
-          "changeFromPrevious": -0.3,
-          "changeFromPreviousPercent": -0.74,
-          "isRed": true
-        },
-        {
-          "stockCode": "TCI",
-          "industry": "Chứng khoán",
-          "netAssetPercent": 2.98,
-          "price": 10.8,
-          "changeFromPrevious": 0.1,
-          "changeFromPreviousPercent": 0.94,
-          "isRed": false
-        },
-        {
-          "stockCode": "PVT",
-          "industry": "Vận tải - Kho bãi",
-          "netAssetPercent": 2.95,
-          "price": 22.25,
-          "changeFromPrevious": 0.15,
-          "changeFromPreviousPercent": 0.68,
-          "isRed": false
-        }
-      ],
-      "industries": [
-        {
-          "industry": "Ngân hàng",
-          "assetPercent": 38.69
-        },
-        {
-          "industry": "Tiện ích",
-          "assetPercent": 6.35
-        },
-        {
-          "industry": "Chứng khoán",
-          "assetPercent": 5.68
-        },
-        {
-          "industry": "Thực phẩm - Đồ uống",
-          "assetPercent": 4.75
-        },
-        {
-          "industry": "Bất động sản",
-          "assetPercent": 4.5
-        },
-        {
-          "industry": "Sản xuất Nhựa - Hóa chất",
-          "assetPercent": 3.3
-        },
-        {
-          "industry": "Vận tải - Kho bãi",
-          "assetPercent": 2.95
-        },
-        {
-          "industry": "Vật liệu xây dựng",
-          "assetPercent": 2.93
-        },
-        {
-          "industry": "Sản xuất Thiết bị, máy móc",
-          "assetPercent": 2.2
-        },
-        {
-          "industry": "Công nghệ và thông tin",
-          "assetPercent": 1.4
-        },
-        {
-          "industry": "Thiết bị điện",
-          "assetPercent": 1.03
-        },
-        {
-          "industry": "Sản xuất Hàng gia dụng",
-          "assetPercent": 0.41
-        },
-        {
-          "industry": "Xây dựng",
-          "assetPercent": 0.24
-        }
-      ],
-      "website": "https://mbcapital.com.vn/quan-ly-quy/MBVF",
-      "closedOrderBookAt": "14:30"
     },
     {
       "code": "BVFED",
@@ -4121,6 +3921,206 @@
         }
       ],
       "website": "https://www.manulifeim.com.vn",
+      "closedOrderBookAt": "14:30"
+    },
+    {
+      "code": "MBVF",
+      "name": "QUỸ ĐẦU TƯ GIÁ TRỊ MB CAPITAL",
+      "shortName": "MBVF",
+      "fundType": "Quỹ cổ phiếu",
+      "nav": 27480.0,
+      "navToPrevious": -0.29,
+      "riskLevel": "Trung bình-Cao",
+      "managementFee": 1.5,
+      "totalAssetBillion": 264.9,
+      "rednessIndex": 0.203,
+      "estimatedNavChange": -0.0055,
+      "estimatedNav": 27478.49,
+      "badge": {
+        "emoji": "🟢",
+        "label": "Xanh – Thị trường tốt",
+        "color": "green"
+      },
+      "performance": {
+        "navTo1Months": 1.83,
+        "navTo3Months": -1.41,
+        "navTo6Months": 1.38,
+        "navTo12Months": 26.5,
+        "navTo24Months": 40.1,
+        "navTo36Months": 64.33,
+        "navTo60Months": 59.27,
+        "navTo7Years": 84.85,
+        "navToEstablish": 174.8,
+        "annualizedReturn36Months": 18.01
+      },
+      "fees": {
+        "buyPct": 0.0,
+        "sell": [
+          {
+            "label": "< 12 tháng",
+            "months_min": 0,
+            "fee_pct": 2.0
+          },
+          {
+            "label": "12-24 tháng",
+            "months_min": 12,
+            "fee_pct": 1.0
+          },
+          {
+            "label": ">= 24 tháng",
+            "months_min": 24,
+            "fee_pct": 0.0
+          }
+        ],
+        "managementPct": 1.5
+      },
+      "topHoldings": [
+        {
+          "stockCode": "ACB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 13.27,
+          "price": 23.6,
+          "changeFromPrevious": -0.15,
+          "changeFromPreviousPercent": -0.63,
+          "isRed": true
+        },
+        {
+          "stockCode": "TCB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 10.9,
+          "price": 33.0,
+          "changeFromPrevious": 0.3,
+          "changeFromPreviousPercent": 0.92,
+          "isRed": false
+        },
+        {
+          "stockCode": "VIB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 5.16,
+          "price": 17.3,
+          "changeFromPrevious": 0.1,
+          "changeFromPreviousPercent": 0.58,
+          "isRed": false
+        },
+        {
+          "stockCode": "TPB",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 4.41,
+          "price": 16.3,
+          "changeFromPrevious": 0.05,
+          "changeFromPreviousPercent": 0.31,
+          "isRed": false
+        },
+        {
+          "stockCode": "QTP",
+          "industry": "Tiện ích",
+          "netAssetPercent": 4.4,
+          "price": 12.9,
+          "changeFromPrevious": -0.1,
+          "changeFromPreviousPercent": -0.77,
+          "isRed": true
+        },
+        {
+          "stockCode": "CTG",
+          "industry": "Ngân hàng",
+          "netAssetPercent": 3.9,
+          "price": 34.9,
+          "changeFromPrevious": 0.05,
+          "changeFromPreviousPercent": 0.14,
+          "isRed": false
+        },
+        {
+          "stockCode": "QNS",
+          "industry": "Thực phẩm - Đồ uống",
+          "netAssetPercent": 3.43,
+          "price": 44.1,
+          "changeFromPrevious": -0.8,
+          "changeFromPreviousPercent": -1.78,
+          "isRed": true
+        },
+        {
+          "stockCode": "DPR",
+          "industry": "Sản xuất Nhựa - Hóa chất",
+          "netAssetPercent": 3.3,
+          "price": 40.45,
+          "changeFromPrevious": -0.3,
+          "changeFromPreviousPercent": -0.74,
+          "isRed": true
+        },
+        {
+          "stockCode": "TCI",
+          "industry": "Chứng khoán",
+          "netAssetPercent": 2.98,
+          "price": 10.8,
+          "changeFromPrevious": 0.1,
+          "changeFromPreviousPercent": 0.94,
+          "isRed": false
+        },
+        {
+          "stockCode": "PVT",
+          "industry": "Vận tải - Kho bãi",
+          "netAssetPercent": 2.95,
+          "price": 22.25,
+          "changeFromPrevious": 0.15,
+          "changeFromPreviousPercent": 0.68,
+          "isRed": false
+        }
+      ],
+      "industries": [
+        {
+          "industry": "Ngân hàng",
+          "assetPercent": 38.69
+        },
+        {
+          "industry": "Tiện ích",
+          "assetPercent": 6.35
+        },
+        {
+          "industry": "Chứng khoán",
+          "assetPercent": 5.68
+        },
+        {
+          "industry": "Thực phẩm - Đồ uống",
+          "assetPercent": 4.75
+        },
+        {
+          "industry": "Bất động sản",
+          "assetPercent": 4.5
+        },
+        {
+          "industry": "Sản xuất Nhựa - Hóa chất",
+          "assetPercent": 3.3
+        },
+        {
+          "industry": "Vận tải - Kho bãi",
+          "assetPercent": 2.95
+        },
+        {
+          "industry": "Vật liệu xây dựng",
+          "assetPercent": 2.93
+        },
+        {
+          "industry": "Sản xuất Thiết bị, máy móc",
+          "assetPercent": 2.2
+        },
+        {
+          "industry": "Công nghệ và thông tin",
+          "assetPercent": 1.4
+        },
+        {
+          "industry": "Thiết bị điện",
+          "assetPercent": 1.03
+        },
+        {
+          "industry": "Sản xuất Hàng gia dụng",
+          "assetPercent": 0.41
+        },
+        {
+          "industry": "Xây dựng",
+          "assetPercent": 0.24
+        }
+      ],
+      "website": "https://mbcapital.com.vn/quan-ly-quy/MBVF",
       "closedOrderBookAt": "14:30"
     },
     {
@@ -5288,29 +5288,29 @@
       "name": "QUỸ ĐẦU TƯ THU NHẬP CHỦ ĐỘNG VCBF",
       "shortName": "VCBF-AIF",
       "fundType": "Quỹ cổ phiếu",
-      "nav": 11944.64,
-      "navToPrevious": 0.66,
+      "nav": 11860.69,
+      "navToPrevious": -0.7,
       "riskLevel": "Trung bình",
       "managementFee": 1.9,
       "totalAssetBillion": 495.6,
       "rednessIndex": 0.1567,
       "estimatedNavChange": -0.0574,
-      "estimatedNav": 11937.78,
+      "estimatedNav": 11853.88,
       "badge": {
         "emoji": "🟢",
         "label": "Xanh – Thị trường tốt",
         "color": "green"
       },
       "performance": {
-        "navTo1Months": 3.65,
-        "navTo3Months": -3.2,
-        "navTo6Months": 10.13,
-        "navTo12Months": 35.12,
+        "navTo1Months": 2.92,
+        "navTo3Months": -3.46,
+        "navTo6Months": 9.36,
+        "navTo12Months": 33.46,
         "navTo24Months": null,
         "navTo36Months": null,
         "navTo60Months": null,
         "navTo7Years": null,
-        "navToEstablish": 19.45,
+        "navToEstablish": 18.61,
         "annualizedReturn36Months": null
       },
       "fees": {
@@ -5732,8 +5732,8 @@
       "managementFee": 1.2,
       "totalAssetBillion": 54.4,
       "rednessIndex": 0.1435,
-      "estimatedNavChange": -0.082,
-      "estimatedNav": 9206.64,
+      "estimatedNavChange": -0.0717,
+      "estimatedNav": 9207.59,
       "badge": {
         "emoji": "🟢",
         "label": "Xanh – Thị trường tốt",
@@ -5795,9 +5795,9 @@
           "stockCode": "PHP",
           "industry": "Vận tải - Kho bãi",
           "netAssetPercent": 3.65,
-          "price": 35.5,
-          "changeFromPrevious": 0.2,
-          "changeFromPreviousPercent": 0.57,
+          "price": 35.6,
+          "changeFromPrevious": 0.3,
+          "changeFromPreviousPercent": 0.85,
           "isRed": false
         },
         {
